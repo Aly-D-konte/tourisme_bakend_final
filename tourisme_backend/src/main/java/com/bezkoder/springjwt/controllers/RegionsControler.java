@@ -148,7 +148,7 @@ public class RegionsControler {
     //@PreAuthorize("hasRole('ADMIN') or hasRole('USER') ")
 
     @ResponseStatus(HttpStatus.OK)
-    public List<Regions> lire(@PathVariable Long id_regions) {
+    public Optional<Regions> lire(@PathVariable Long id_regions) {
         return this.regionsService.afficherUneRegion(id_regions);
     }
 //Classe permettant de modifier les regions
