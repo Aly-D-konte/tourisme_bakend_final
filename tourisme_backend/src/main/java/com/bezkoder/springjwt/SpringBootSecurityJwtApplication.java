@@ -35,7 +35,7 @@ public class SpringBootSecurityJwtApplication implements CommandLineRunner {
 		Role role = new Role();
 		User user = new User();
 		role.setName(ERole.ROLE_ADMIN);
-		//role.setName(ERole.ROLE_USER);
+		role.setName(ERole.ROLE_USER);
 		Set<Role> roles = new HashSet<>();
 
 		roles.add(role);

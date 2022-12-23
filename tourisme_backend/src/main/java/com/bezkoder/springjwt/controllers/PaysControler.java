@@ -3,8 +3,11 @@ package com.bezkoder.springjwt.controllers;
 
 import com.bezkoder.springjwt.img.ConfigImage;
 import com.bezkoder.springjwt.models.Pays;
+import com.bezkoder.springjwt.models.User;
 import com.bezkoder.springjwt.payload.response.MessageResponse;
 import com.bezkoder.springjwt.repository.PaysRepository;
+import com.bezkoder.springjwt.repository.RegionsRepository;
+import com.bezkoder.springjwt.repository.UserRepository;
 import com.bezkoder.springjwt.security.services.PaysService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
@@ -26,11 +29,16 @@ public class PaysControler {
     private PaysService paysService;
     @Autowired
     private PaysRepository paysRepository;
+    private final RegionsRepository regionsRepository;
 
+    @Autowired
+    private UserRepository userRepository;
     // ----------------------------Controller-----------------------------------
     @Autowired
-    public  PaysControler(PaysService paysService) {
+    public  PaysControler(PaysService paysService,
+                          RegionsRepository regionsRepository) {
         this.paysService = paysService;
+        this.regionsRepository = regionsRepository;
     }
     // ----------------------------Request Post-----------------------------------
 
@@ -127,4 +135,10 @@ public class PaysControler {
          this.paysService.supprimerPays(id_pays);
     }
 
+
+
+    @GetMapping("/utilisateur")
+    public int liste(){
+        return  userRepository.findAll().size();
+    }
 }

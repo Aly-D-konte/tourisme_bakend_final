@@ -27,4 +27,9 @@ public interface RegionsRepository extends JpaRepository<Regions, Long> {
 */
 
     public Regions findByNomregions(String regions);
+
+
+//    @Query("SELECT COUNT(id_regions) FROM Regions WHERE id_regions:id_regions")
+//    int nombreregion(Long id_regions);
+
 }
