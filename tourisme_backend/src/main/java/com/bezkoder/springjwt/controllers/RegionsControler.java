@@ -65,7 +65,7 @@ public class RegionsControler {
 
     public MessageResponse ajouterRegion(@Param("nomregions") String nomregions, @Param("coderegion") String coderegion, @Param("activiterregion") String activiterregion, @Param("superficieregion") String superficieregion, @Param("languemregion") String languemregion, @Param("description") String description, @Param("file") MultipartFile file) throws IOException {
 
-        System.out.println("aaaaaaaaaaaaa"+ activiterregion + "description: " + description +  "     superfice" + superficieregion);
+        System.out.println("aaaaaaaaaaaaa"+ activiterregion + " " + "description: " + description +  " " + "     superfice" + superficieregion);
 
         Regions regions = new Regions();
         String nomfile = StringUtils.cleanPath(file.getOriginalFilename());

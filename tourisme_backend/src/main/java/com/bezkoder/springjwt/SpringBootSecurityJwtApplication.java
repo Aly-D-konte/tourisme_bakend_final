@@ -3,6 +3,7 @@ package com.bezkoder.springjwt;
 import com.bezkoder.springjwt.models.ERole;
 import com.bezkoder.springjwt.models.Role;
 import com.bezkoder.springjwt.models.User;
+import com.bezkoder.springjwt.repository.RegionsRepository;
 import com.bezkoder.springjwt.repository.RoleRepository;
 import com.bezkoder.springjwt.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,12 +31,14 @@ public class SpringBootSecurityJwtApplication implements CommandLineRunner {
 
 	@Autowired
 	PasswordEncoder encoder;
+	@Autowired
+	private RegionsRepository regionsRepository;
+
 	@Override
 	public void run(String... args) throws Exception {
 		Role role = new Role();
 		User user = new User();
 		role.setName(ERole.ROLE_ADMIN);
-		role.setName(ERole.ROLE_USER);
 		Set<Role> roles = new HashSet<>();
 
 		roles.add(role);
@@ -58,5 +61,15 @@ public class SpringBootSecurityJwtApplication implements CommandLineRunner {
 			userRepository.save(user);
 
 		}
+
+
+		Role R = new Role();
+		R.setName(ERole.ROLE_USER);
+
+		if (regionsRepository.findAll().size()== 0){
+			roleRepository.save(R);
+
+		}
+
 	}
 }
